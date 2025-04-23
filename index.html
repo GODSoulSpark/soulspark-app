@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoulSpark</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="particle-canvas" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>
+    <div class="container">
+        <!-- Start Page -->
+        <div id="home" class="page">
+            <div class="header">
+                <h1>SoulSpark</h1>
+                <p>Nourish Your Body, Nurture Your Soul</p>
+                <p class="description">Start your day with Physical and Soul Sparks—small tasks to care for your body and spirit, building a healthier, happier you.</p>
+            </div>
+            <h3>Today's Sparks</h3>
+            <div class="sparks">
+                <div id="physical-spark" class="spark-card">
+                    <h3>Physical Body</h3>
+                    <p id="physical-spark-text"></p>
+                    <button onclick="completeSpark('physical')">Complete</button>
+                </div>
+                <div id="soul-spark" class="spark-card">
+                    <h3>Soul Body</h3>
+                    <p id="soul-spark-text"></p>
+                    <button onclick="completeSpark('soul')">Complete</button>
+                </div>
+            </div>
+            <p class="points">Health Points: <span id="health-points">0</span></p>
+        </div>
+
+        <!-- Dual Growth Garden -->
+        <div id="garden" class="page" style="display: none;">
+            <h2>Your Dual Garden</h2>
+            <p class="description">Watch your garden grow with each Spark—trees for physical health, stars for your soul’s divine light, showing your progress.</p>
+            <canvas id="garden-canvas" width="300" height="300"></canvas>
+        </div>
+
+        <!-- Holistic Mood Tracker -->
+        <div id="mood" class="page" style="display: none;">
+            <h2>Mood Tracker</h2>
+            <p class="description">Reflect on your physical and soul states to see how your Sparks bring energy and peace to both body and spirit.</p>
+            <h3>Physical State</h3>
+            <select id="physical-mood">
+                <option value="Energized">Energized</option>
+                <option value="Tired">Tired</option>
+            </select>
+            <h3>Soul State</h3>
+            <select id="soul-mood">
+                <option value="Peaceful">Peaceful</option>
+                <option value="Disconnected">Disconnected</option>
+            </select>
+            <button onclick="logMood()">Log Mood</button>
+            <p id="mood-history"></p>
+        </div>
+
+        <!-- Spark Feed -->
+        <div id="feed" class="page" style="display: none;">
+            <h2>Spark Feed</h2>
+            <p class="description">Feel connected by seeing others’ Sparks, celebrating physical and soul actions that inspire a community of care.</p>
+            <ul id="spark-feed">
+                <li>Anonymous completed a Physical Spark!</li>
+                <li>Anonymous nurtured their Soul!</li>
+            </ul>
+        </div>
+
+        <!-- Calendar Page -->
+        <div id="calendar" class="page" style="display: none;">
+            <h2>Your Progress Calendar</h2>
+            <p class="description">Track your daily progress—green for Physical Sparks, purple for Soul Sparks, and blue for mood logs.</p>
+            <div id="calendar-header">
+                <button onclick="changeMonth(-1)">Prev</button>
+                <h3 id="calendar-month"></h3>
+                <button onclick="changeMonth(1)">Next</button>
+            </div>
+            <div id="calendar-grid">
+                <!-- Days will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <nav>
+            <button id="nav-home" onclick="showPage('home')">Home</button>
+            <button id="nav-garden" onclick="showPage('garden')">Dual Garden</button>
+            <button id="nav-mood" onclick="showPage('mood')">Mood Tracker</button>
+            <button id="nav-feed" onclick="showPage('feed')">Spark Feed</button>
+            <button id="nav-calendar" onclick="showPage('calendar')">Calendar</button>
+            <button id="audio-toggle" onclick="toggleAudio()">🔊 Play Audio</button>
+        </nav>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="background-audio" loop>
+        <source src="background-audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

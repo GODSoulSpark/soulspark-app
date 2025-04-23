@@ -1,0 +1,355 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #e1f5fe; /* Fallback color */
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 20px 20px 80px;
+    overflow-x: hidden;
+}
+
+.page {
+    margin-top: 20px;
+    display: none; /* Ensure all pages are hidden by default */
+}
+
+.page[style*="block"] {
+    display: block !important; /* Ensure the active page is visible */
+}
+
+#home {
+    background: url('soulspark_start_page.png') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    z-index: 0;
+}
+
+#garden {
+    background: url('soulspark_garden_page.png') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    z-index: 0;
+}
+
+#mood {
+    background: url('soulspark_mood_page.png') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    z-index: 0;
+}
+
+#feed {
+    background: url('soulspark_feed_page.png') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    z-index: 0;
+}
+
+#calendar {
+    background: url('soulspark_calendar_page.png') no-repeat center center fixed !important;
+    background-size: cover !important;
+    position: relative;
+    z-index: 0;
+}
+
+#particle-canvas {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.container {
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    min-height: calc(100vh - 100px);
+}
+
+.header {
+    background: rgba(74, 44, 107, 0.8);
+    padding: 10px;
+    border: 1px solid #6b4e8e;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    animation: fadeSlide 1s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+h1 {
+    color: #fff;
+    font-size: 28px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.header p {
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    margin: 5px 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.description {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #2c1a4a;
+    margin: 10px 0;
+    padding: 5px;
+    border: 1px solid #6b4e8e;
+    border-radius: 5px;
+    animation: fadeSlide 1s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+.sparks {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.spark-card {
+    padding: 15px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+#physical-spark {
+    background: rgba(200, 230, 201, 0.9);
+    border: 1px solid #388e3c;
+    animation: fadeSlide 1.2s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+#soul-spark {
+    background: rgba(243, 229, 245, 0.9);
+    border: 1px solid #6b4e8e;
+    animation: fadeSlide 1.2s ease-out 0.6s forwards;
+    opacity: 0;
+}
+
+#soul-spark h3 {
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.spark-card:hover {
+    transform: scale(1.05);
+}
+
+h3 {
+    color: #2c1a4a;
+    font-size: 18px;
+    margin: 0 0 10px;
+    padding: 5px;
+    border: 1px solid #6b4e8e;
+    border-radius: 5px;
+}
+
+h2 {
+    color: #2c1a4a;
+    font-size: 24px;
+    margin: 10px 0;
+    padding: 5px;
+    border: 1px solid #6b4e8e;
+    border-radius: 5px;
+}
+
+p {
+    color: #333;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.points {
+    font-size: 16px;
+    margin: 15px 0;
+    color: #2c1a4a;
+    padding: 5px;
+    border: 1px solid #6b4e8e;
+    border-radius: 5px;
+    animation: fadeScale 1s ease-out 0.8s forwards;
+    opacity: 0;
+}
+
+nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    background: rgba(74, 44, 107, 0.9);
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    animation: fadeSlide 1s ease-out 1s forwards;
+    opacity: 0;
+}
+
+nav button {
+    padding: 10px;
+    background: #4a2c6b;
+    color: white;
+    border: 1px solid #6b4e8e;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+nav button:hover {
+    background: #6b4e8e;
+}
+
+nav button.active {
+    background: #8a6ab1;
+}
+
+button {
+    padding: 10px 20px;
+    background: #ffcc80;
+    border: 1px solid #6b4e8e;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+}
+
+button:hover {
+    background: #ffb74d;
+}
+
+canvas {
+    border: 1px solid #ccc;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #e1bee7;
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #6b4e8e;
+    border-radius: 5px;
+}
+
+/* Calendar Styles */
+#calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.day {
+    background: rgba(255, 255, 250, 0.7);
+    border: 1px solid #6b4e8e;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    font-size: 12px;
+    min-height: 50px;
+    position: relative;
+}
+
+.day.empty {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.day.today {
+    border: 2px solid #ffd700; /* Gold border for today */
+    background: rgba(255, 215, 0, 0.2); /* Subtle gold tint */
+}
+
+.day .indicators {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    margin-top: 5px;
+}
+
+.day .indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.day .indicator.physical {
+    background: #388e3c; /* Green for Physical Sparks */
+}
+
+.day .indicator.soul {
+    background: #6b4e8e; /* Purple for Soul Sparks */
+}
+
+.day .indicator.mood {
+    background: #2196f3; /* Blue for Mood Logs */
+}
+
+/* Audio Toggle Button */
+#audio-toggle {
+    padding: 10px;
+    background: #4a2c6b;
+    color: white;
+    border: 1px solid #6b4e8e;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+#audio-toggle:hover {
+    background: #6b4e8e;
+}
+
+#audio-toggle.playing {
+    background: #8a6ab1;
+}
+
+/* Animations */
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+    to {
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    }
+}
